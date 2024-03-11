@@ -2,6 +2,7 @@ package main
 
 import (
 	"certificados_backend/routes"
+	"net/http"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -19,6 +20,9 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
+	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "CertyFlyer Works !")
+	})
 	r.POST("/upload", routes.UploadEndpoint)
 
 	r.Run(":8080")
