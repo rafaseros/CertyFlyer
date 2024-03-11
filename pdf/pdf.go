@@ -53,7 +53,7 @@ func GenerarPDF(nombre, rutaImagen string) (string, error) {
 	pdf.Text(nombre)
 
 	// Guardar el PDF
-	rutaArchivo := filepath.Join("out", nombre+".pdf")
+	rutaArchivo := filepath.Join("./out", nombre+".pdf")
 	err = pdf.WritePdf(rutaArchivo)
 	if err != nil {
 		return "", err
