@@ -37,7 +37,6 @@ func GuardarImagenTemporal(fileImagen multipart.FileHeader) (string, error) {
 	// Guardar la imagen temporalmente para usarla en la generación de PDF
 	srcImagen, err := fileImagen.Open()
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return "", err
 	}
 	defer srcImagen.Close()
@@ -45,14 +44,12 @@ func GuardarImagenTemporal(fileImagen multipart.FileHeader) (string, error) {
 	// Leer el contenido del archivo imagen en un slice de bytes
 	contenidoImagen, err := io.ReadAll(srcImagen)
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return "", err
 	}
 
 	rutaImagen := filepath.Join("temp", fileImagen.Filename)
 	err = os.WriteFile(rutaImagen, contenidoImagen, os.ModePerm)
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return "", err
 	}
 	return rutaImagen, nil
