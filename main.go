@@ -25,5 +25,5 @@ func main() {
 	})
 	r.POST("/upload", routes.UploadEndpoint)
 
-	r.Run(":8080")
+	r.Run()
 }
